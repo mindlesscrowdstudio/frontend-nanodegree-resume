@@ -1,6 +1,4 @@
 
-console.log('resumeBuilder');
-
  var bio = {
    "name"    : "Melina Cisneros",
    "role"    : "frontend_developer",
@@ -161,7 +159,13 @@ while (cameron.job === "course dev") {
   }
 }
 
+
+
 /**
+ * functions chapter
+ */
+function displayWork() {
+  /**
  * for in loops let us access to arrays an objects 
  *
  * for (item in object or array ) {
@@ -174,29 +178,28 @@ while (cameron.job === "course dev") {
  *
  * For in loops are considered as a bad practice because can be act weird 
  * instead it's recommenden to use for each or for loops.
- */
+ */  
 
-work.jobs.forEach(function(job){
-  $("#workExperience").append(HTMLworkStart);
+  work.jobs.forEach(function(job){
+    $("#workExperience").append(HTMLworkStart);
 
-  var formatEmployer = HTMLworkEmployer.replace("%data%", job.employer);
-  var formatTitle = HTMLworkTitle.replace("%data%", job.title);
-  var formatEmployerTitle = formatEmployer + formatTitle;
+    var formatEmployer = HTMLworkEmployer.replace("%data%", job.employer);
+    var formatTitle = HTMLworkTitle.replace("%data%", job.title);
+    var formatEmployerTitle = formatEmployer + formatTitle;
 
-  $(".work-entry:last").append(formatEmployerTitle);
+    $(".work-entry:last").append(formatEmployerTitle);
 
-  var formatDates = HTMLworkDates.replace("%data%", job.dates);
-  $(".work-entry:last").append(formatDates);
+    var formatDates = HTMLworkDates.replace("%data%", job.dates);
+    $(".work-entry:last").append(formatDates);
 
-  var formatLocation = HTMLworkLocation.replace("%data%", job.location);
-  $(".work-entry:last").append(formatLocation);
+    var formatLocation = HTMLworkLocation.replace("%data%", job.location);
+    $(".work-entry:last").append(formatLocation);
 
-  var formatDescription = HTMLworkDescription.replace("%data%", job.description);
- 
-   $(".work-entry").append(formatDescription);
+    var formatDescription = HTMLworkDescription.replace("%data%", job.description);
   
-  
-});
+    $(".work-entry").append(formatDescription);
+    
+  });
 
 /**
  * this is an iteration with the for in loop. only for demostration purposes
@@ -224,20 +227,44 @@ work.jobs.forEach(function(job){
     $(".work-entry:last").append(formatDescription);   
     
   }    
-}
+  }
 */
+}
+
+displayWork();
+
+$(document).click( function(loc) {
+  var x = loc.pageX;
+  var y = loc.pageY;
+  console.log(x);
+  var collect = [];
+ logClicks(x,y);
+});
+
+
+function locationizer(work_obj) {
+ var locationizer = [];
+ work_obj.jobs.forEach(function (entry) {
+   locationizer.push(entry.location);  
+   console.log(locationizer);
+ });   
+ return locationizer;
+} 
+
+// Did locationizer() work? This line will tell you!
+console.log("funt", locationizer(work));
 
 
 
 
+function inName(name) {
+  name = name.trim().split(" ");
+  
+  name[1] = name[1].toUpperCase();
+  name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+ 
+  return name[0] + " " + name[1];
+}
 
-
-
-
-
-
-
-
-
-
+$("#main").append(internationalizeButton);
 
